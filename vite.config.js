@@ -4,6 +4,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    // Phone tunnels (loca.lt / cloudflare) send a foreign Host header.
+    allowedHosts: true,
+  },
   build: {
     rollupOptions: {
       input: {
