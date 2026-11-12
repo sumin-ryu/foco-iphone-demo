@@ -1,0 +1,209 @@
+.home {
+  padding: 64.3px 9.5px 0;
+}
+
+.home__logo,
+.home__greeting,
+.seat-card,
+.tile {
+  animation: fade-up 0.5s var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+.home__logo {
+  animation-name: logo-in;
+  animation-duration: 0.8s;
+  animation-timing-function: var(--ease-spring);
+}
+
+@keyframes logo-in {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+  }
+}
+
+.home__logo {
+  display: block;
+  margin-left: 6.7px;
+  color: var(--color-navy);
+}
+
+.home__greeting {
+  margin: 4.3px 0 0 6.7px;
+  font-size: 33px;
+  font-weight: 500;
+  line-height: 46px;
+  letter-spacing: -0.55px;
+  color: #1c1b1c;
+}
+
+.home__name {
+  color: var(--color-navy);
+}
+
+.seat-card {
+  display: flex;
+  flex-direction: column;
+  height: 135.5px;
+  margin-top: 26.5px;
+  padding: 64px 18px 0 19px;
+  border-radius: 19px;
+  background: #f1f5fe;
+  box-shadow: 0 0 12.8px rgba(0, 0, 0, 0.16);
+  color: var(--color-navy);
+  --press-scale: 0.97;
+}
+
+.seat-card__label {
+  font-size: 17.5px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.seat-card__value {
+  margin: 1.2px 0 0 -2.3px;
+  font-size: 27px;
+  font-weight: 200;
+  line-height: 32px;
+  letter-spacing: 0.5px;
+}
+
+.seat-card--session {
+  position: relative;
+}
+
+.seat-card__action {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--color-navy);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 138.3px 138.3px;
+  gap: 9.5px;
+  margin-top: 9.5px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 19px;
+  --press-scale: 0.97;
+}
+
+.tile--tall {
+  grid-row: span 2;
+  padding: 18px 18px 21.8px 20px;
+}
+
+.tile--dark {
+  background: var(--color-navy);
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.12);
+  color: #fff;
+}
+
+.tile--light {
+  padding: 18px 22px 15.2px 21.7px;
+  background: var(--color-card);
+  color: #1c1b1c;
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.12);
+}
+
+.tile--pass {
+  padding-top: 16px;
+  padding-bottom: 17.4px;
+}
+
+.tile__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.tile__title {
+  font-size: 17.5px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0.4px;
+}
+
+.tile__arrow {
+  flex: none;
+  margin-top: 4.4px;
+  transition: transform 0.45s var(--ease-spring);
+}
+
+.tile:active .tile__arrow {
+  transform: translateX(5px);
+}
+
+@media (hover: hover) {
+  .tile:hover .tile__arrow {
+    transform: translateX(4px);
+  }
+
+  .tile--light:hover,
+  .seat-card:hover {
+    box-shadow: 0 8px 20px -8px rgba(15, 23, 42, 0.18);
+  }
+
+  .tile--dark:hover {
+    box-shadow: 0 10px 24px -10px rgba(34, 48, 79, 0.6);
+  }
+}
+
+.tile__desc {
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+button.tile {
+  text-align: left;
+}
+
+/* Checked in but not focusing yet: only the main tile and check-out stay live */
+.tile.is-disabled {
+  background: #ebebed;
+  box-shadow: none;
+  cursor: default;
+}
+
+.tile.is-disabled .tile__title,
+.tile.is-disabled .tile__arrow {
+  color: #77777c;
+}
+
+.tile.is-disabled .tile__desc {
+  color: #8e8e93;
+  opacity: 1;
+}
+
+.tile.is-disabled:active .tile__arrow {
+  transform: none;
+}
+
+@media (hover: hover) {
+  .tile.is-disabled:hover .tile__arrow {
+    transform: none;
+  }
+
+  .tile--light.is-disabled:hover {
+    box-shadow: none;
+  }
+}

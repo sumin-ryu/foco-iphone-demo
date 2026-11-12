@@ -1,0 +1,45 @@
+/* Dark screens (focus report, monthly summary): like the focus screen, cards turn to glass.
+   `--color-bg` is on :root so `.iphone__screen` / `.bare__screen` match (not only `.app`). */
+
+:root[data-screen='dark'] {
+  --color-bg: #1c1b1c;
+  --color-card: rgba(255, 255, 255, 0.06);
+  --color-navy: #fff;
+  --color-navy-soft: rgba(255, 255, 255, 0.1);
+  --color-text: #fff;
+  --color-text-sub: rgba(255, 255, 255, 0.55);
+  --color-muted: rgba(255, 255, 255, 0.3);
+  --color-line: rgba(255, 255, 255, 0.08);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+:root[data-screen='dark'] .app {
+  color: var(--color-text);
+}
+
+:root[data-screen='dark'] .app__status-backdrop {
+  background: linear-gradient(to bottom, var(--color-bg) 80%, rgba(28, 27, 28, 0));
+}
+
+:root[data-screen='dark'] .page-header__back:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-screen='dark'] .card {
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+:root[data-screen='dark'] .btn--primary {
+  background: #fff;
+  color: #1c1b1c;
+}
+
+:root[data-screen='dark'] .btn--primary:not(:disabled):active {
+  background: #d6d6d6;
+}
+
+:root[data-screen='dark'] .btn--secondary:not(:disabled):active {
+  background: rgba(255, 255, 255, 0.12);
+}

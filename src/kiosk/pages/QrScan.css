@@ -1,0 +1,88 @@
+.k-qr {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px var(--k-gutter-wide) 0;
+}
+
+.k-qr__title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.k-qr__code {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin-top: 48px;
+  overflow: hidden;
+  --press-scale: 0.98;
+}
+
+.k-qr__code svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.k-qr__code--done svg {
+  opacity: 0.12;
+}
+
+.k-qr__beam {
+  position: absolute;
+  right: -8px;
+  left: -8px;
+  height: 56px;
+  border-bottom: 2px solid var(--k-navy);
+  background: linear-gradient(180deg, transparent, rgba(34, 48, 79, 0.1));
+  animation: k-qr-beam 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes k-qr-beam {
+  from {
+    top: -56px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.k-qr__success {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--k-navy);
+  animation: fade-up 0.35s var(--ease-out) backwards;
+}
+
+.k-qr__check {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--k-navy);
+  color: #fff;
+  animation: pop 0.5s var(--ease-out);
+}
+
+.k-qr__hint {
+  margin-top: 40px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4b5b7f;
+  text-align: center;
+  white-space: pre-line;
+}

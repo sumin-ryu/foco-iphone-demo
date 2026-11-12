@@ -1,0 +1,40 @@
+.pass-done {
+  position: absolute;
+  inset: 0;
+  padding: calc(var(--safe-top) + 239px) 14px 0;
+  background: #fff;
+  text-align: center;
+}
+
+.pass-done__title {
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #1c1b1c;
+  animation: fade-up 0.5s var(--ease-out) 0.1s backwards;
+}
+
+.pass-done__desc {
+  margin-top: 32px;
+  font-size: 15px;
+  line-height: 22px;
+  color: #777788;
+  animation: fade-up 0.5s var(--ease-out) 0.2s backwards;
+}
+
+.pass-done__home {
+  width: 100%;
+  height: 63px;
+  margin-top: 30px;
+  border-radius: 7.5px;
+  background: var(--color-navy);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  animation: fade-up 0.5s var(--ease-out) 0.3s backwards;
+  --press-scale: 0.97;
+}
+
+.pass-done__home:active {
+  background: #1a2540;
+}

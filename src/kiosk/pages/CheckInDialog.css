@@ -1,0 +1,81 @@
+.k-dialog {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgba(17, 18, 20, 0.45);
+  animation: k-dialog-fade 0.25s ease backwards;
+}
+
+@keyframes k-dialog-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.k-dialog__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 424px;
+  padding: 24px 28px 32px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+  animation: scale-in 0.35s var(--ease-out) backwards;
+}
+
+.k-dialog__close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: -6px 0 0 -10px;
+  border-radius: 12px;
+}
+
+.k-dialog__title {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.k-dialog__option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 156px;
+  padding: 24px 24px 22px;
+  border-radius: 12px;
+}
+
+.k-dialog__option strong {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.k-dialog__option span {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.k-dialog__option--member {
+  background: var(--k-navy);
+  color: #fff;
+}
+
+.k-dialog__option--member span {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.k-dialog__option--guest {
+  background: var(--k-gray);
+  box-shadow: inset 0 0 0 1.5px var(--k-gray-line);
+  color: #24262b;
+}
+
+.k-dialog__option--guest span {
+  color: #555a64;
+}

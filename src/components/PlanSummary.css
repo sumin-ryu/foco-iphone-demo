@@ -1,0 +1,87 @@
+.plan-card__name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 28px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.plan-card__memo {
+  margin-top: 5px;
+  padding-bottom: 7px;
+  border-bottom: 0.5px solid #cac9c7;
+  font-size: 14.5px;
+  line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.plan-card__memo.is-empty {
+  margin-top: 0;
+  padding-bottom: 12px;
+}
+
+.plan-card__subjects {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2px;
+  margin-top: 10.5px;
+  font-size: 12.5px;
+  line-height: 18px;
+  color: #777788;
+}
+
+.plan-card__subjects > span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.plan-card__sep {
+  width: 0.5px;
+  height: 13px;
+  margin: 0 11.5px;
+  background: #777788;
+}
+
+.plan-card__detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease-out);
+}
+
+.plan-card__detail.is-open {
+  grid-template-rows: 1fr;
+}
+
+.plan-card__detail > ul {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.plan-card__detail li {
+  display: flex;
+  gap: 12px;
+  padding-top: 10px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.plan-card__detail li:first-child {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid #cac9c7;
+}
+
+.plan-card__detail-name {
+  flex: none;
+  min-width: 64px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.plan-card__detail-goal {
+  color: #777788;
+}

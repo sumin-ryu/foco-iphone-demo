@@ -1,0 +1,38 @@
+.focus-mark {
+  --focus-mark-rest: #c45c5c;
+  --focus-mark-idle: color-mix(in srgb, currentColor 28%, transparent);
+  display: block;
+  overflow: visible;
+}
+
+.focus-mark__rest {
+  stroke: var(--focus-mark-rest);
+}
+
+.focus-mark__idle {
+  stroke: var(--focus-mark-idle);
+}
+
+/* On dark report screens, rest stays readable against white strokes. */
+.dark-screen .focus-mark {
+  --focus-mark-rest: #f0a0a0;
+  --focus-mark-idle: rgba(255, 255, 255, 0.22);
+}
+
+.focus-mark--animate line {
+  stroke-dasharray: 1;
+  animation: focus-ray 0.55s var(--ease-out) backwards;
+  animation-delay: calc(0.12s + var(--i) * 0.09s);
+}
+
+.focus-mark--animate .focus-mark__dot {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: scale-in 0.3s var(--ease-out) backwards;
+}
+
+@keyframes focus-ray {
+  from {
+    stroke-dashoffset: 1;
+  }
+}

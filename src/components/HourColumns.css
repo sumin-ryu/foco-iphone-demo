@@ -1,0 +1,148 @@
+.hour-columns {
+  margin: 0;
+}
+
+.hour-columns__plot {
+  display: flex;
+  gap: 8px;
+  height: 180px;
+  padding-top: 18px;
+}
+
+.hour-columns__axis {
+  position: relative;
+  flex: none;
+  width: 26px;
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.hour-columns__axis span {
+  position: absolute;
+  right: 0;
+  transform: translateY(50%);
+}
+
+.hour-columns__chart {
+  position: relative;
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.hour-columns__guide {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.25);
+}
+
+.hour-columns__col {
+  position: relative;
+  flex: 1;
+  transform-origin: bottom;
+  animation: hour-columns-rise 0.6s var(--ease-out) backwards;
+}
+
+.hour-columns__stack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.hour-columns__stack b {
+  flex: none;
+}
+
+.hour-columns__focus {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.hour-columns__rest {
+  background: #474747;
+}
+
+.hour-columns__unused {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.hour-columns__col.is-faded .hour-columns__focus {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.hour-columns__value {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-bottom: 4px;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #1c1b1c;
+  transform: translateY(100%);
+  z-index: 1;
+}
+
+.hour-columns__col.is-first-fade::after {
+  content: '';
+  position: absolute;
+  inset: -6px -3px -3px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #ff8a80;
+  pointer-events: none;
+}
+
+@keyframes hour-columns-rise {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+.hour-columns__labels {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  padding-left: 34px;
+}
+
+.hour-columns__labels span {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hour-columns__labels em {
+  margin-top: 1px;
+  font-size: 10.5px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.hour-columns__legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hour-columns__legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hour-columns__legend i {
+  width: 10px;
+  height: 10px;
+}

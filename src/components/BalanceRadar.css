@@ -1,0 +1,88 @@
+.balance-radar {
+  margin: 0;
+}
+
+.balance-radar svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.balance-radar__grid {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 0.75;
+}
+
+.balance-radar__prev {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.balance-radar__now {
+  fill: rgba(255, 255, 255, 0.14);
+  stroke: #fff;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  transform-origin: 140px 114px;
+  animation: balance-radar-grow 0.6s var(--ease-out) 0.2s backwards;
+}
+
+.balance-radar__dot {
+  fill: #fff;
+  animation: balance-radar-fade 0.3s 0.6s backwards;
+}
+
+@keyframes balance-radar-grow {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+
+@keyframes balance-radar-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.balance-radar__label {
+  font-size: 12px;
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+.balance-radar__value {
+  font-size: 13px;
+  font-weight: 600;
+  fill: #fff;
+}
+
+.balance-radar__legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.balance-radar__legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.balance-radar__key {
+  width: 14px;
+  height: 0;
+}
+
+.balance-radar__key--now {
+  border-top: 1.5px solid #fff;
+}
+
+.balance-radar__key--prev {
+  border-top: 1px dashed rgba(255, 255, 255, 0.6);
+}

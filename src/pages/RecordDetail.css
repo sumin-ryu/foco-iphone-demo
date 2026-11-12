@@ -1,0 +1,58 @@
+.record-detail__hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  color: var(--color-navy);
+}
+
+.record-detail__hero .card__big {
+  margin-top: 2px;
+}
+
+.record-detail__visits {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 8px;
+  padding: 4px 4px 0;
+}
+
+.record-detail__visit {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--color-navy-soft);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-sub);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  --press-scale: 0.96;
+}
+
+.record-detail__visit span {
+  font-size: 11.5px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.record-detail__visit.is-selected {
+  background: var(--color-navy);
+  color: var(--color-bg);
+}
+
+@keyframes timeline-grow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}

@@ -1,0 +1,314 @@
+.rooms {
+  padding-bottom: 24px;
+}
+
+.rooms section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rooms .section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.rooms__hint {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+/* ───────── My bookings ───────── */
+
+.rooms__mine {
+  margin: 0;
+  padding: 4px 16px;
+  list-style: none;
+  color: var(--color-navy);
+}
+
+.rooms__booking {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.rooms__booking + .rooms__booking {
+  border-top: 1px solid var(--color-line);
+}
+
+.rooms__booking.is-new {
+  animation: rooms-new 1.4s var(--ease-out);
+}
+
+@keyframes rooms-new {
+  0%,
+  40% {
+    background: var(--color-navy-soft);
+  }
+}
+
+.rooms__booking-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.rooms__booking-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.rooms__booking .list__sub {
+  margin: 3px 0 0;
+  font-size: 12px;
+}
+
+.rooms__cancel {
+  flex: none;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #f1f2f5;
+  color: var(--color-text-sub);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ───────── Pickers ───────── */
+
+.rooms__rooms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.rooms__room,
+.rooms__day,
+.rooms__hour,
+.rooms__slot,
+.rooms__pass {
+  border-radius: 14px;
+  background: var(--color-card);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+  color: var(--color-text);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.rooms__room {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.rooms__room-name {
+  margin-bottom: 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rooms__room-meta {
+  font-size: 12px;
+  color: var(--color-text-sub);
+}
+
+.rooms__room.is-selected,
+.rooms__day.is-selected,
+.rooms__hour.is-selected,
+.rooms__pass.is-selected {
+  box-shadow: inset 0 0 0 1.5px var(--color-navy);
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+}
+
+.rooms__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.rooms__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0;
+  font-size: 11px;
+  color: var(--color-text-sub);
+}
+
+.rooms__day strong {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.rooms__day.is-selected strong {
+  color: var(--color-navy);
+}
+
+.rooms__hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.rooms__hour {
+  height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rooms__slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.rooms__slot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 11px 14px;
+  text-align: left;
+}
+
+.rooms__slot strong {
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.rooms__slot span {
+  font-size: 11.5px;
+  color: var(--color-text-sub);
+}
+
+.rooms__slot--taken,
+.rooms__slot--past {
+  background: #f1f2f5;
+  box-shadow: none;
+  color: #b0b3ba;
+}
+
+.rooms__slot--taken span,
+.rooms__slot--past span {
+  color: #b0b3ba;
+}
+
+.rooms__slot--mine {
+  background: var(--color-navy-soft);
+  box-shadow: none;
+  color: var(--color-navy);
+}
+
+.rooms__slot.is-selected {
+  background: var(--color-navy);
+  box-shadow: none;
+  color: #fff;
+}
+
+.rooms__slot.is-selected span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ───────── Title & pass ───────── */
+
+.rooms__title-input {
+  height: 48px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--color-card);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+  font: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+  outline: none;
+}
+
+.rooms__title-input:focus {
+  box-shadow: inset 0 0 0 1.5px var(--color-navy);
+}
+
+.rooms__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rooms__chip {
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #eceef2;
+  color: var(--color-text-sub);
+  font-size: 12.5px;
+}
+
+.rooms__passes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 8px;
+}
+
+.rooms__pass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 0 12px;
+  color: var(--color-navy);
+}
+
+.rooms__pass span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.rooms__pass em {
+  font-size: 11.5px;
+  font-style: normal;
+  color: var(--color-text-sub);
+}
+
+.rooms__no-pass {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+.rooms__no-pass p {
+  margin: 0;
+}
+
+.rooms__buy {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.rooms__note {
+  margin: 0;
+  padding: 0 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.rooms__submit {
+  margin-top: 4px;
+}

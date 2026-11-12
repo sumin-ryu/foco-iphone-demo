@@ -1,0 +1,131 @@
+.signup__progress {
+  position: absolute;
+  left: 50%;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+  transform: translateX(-50%);
+}
+
+.signup__check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.3);
+  color: #1c1b1c;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.signup__check.is-checked {
+  background: #fff;
+  box-shadow: none;
+}
+
+.signup__all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 58px;
+  margin-top: 32px;
+  padding: 0 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  --press-scale: 0.98;
+}
+
+.signup__terms {
+  margin-top: 8px;
+  padding: 0 4px;
+}
+
+.signup__term {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 12px;
+  font-size: 14.5px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.signup__term .signup__check {
+  width: 20px;
+  height: 20px;
+}
+
+.signup__term > span:not(.signup__check) {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.signup__term > span.is-required {
+  color: #a9b8d6;
+}
+
+.signup__field {
+  margin-top: 24px;
+}
+
+.signup__rules {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.signup__rules li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.2s ease;
+}
+
+.signup__rules li.is-ok {
+  color: #8bd3a0;
+}
+
+.signup__error {
+  color: #ff8a80 !important;
+}
+
+.signup__welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.signup__welcome-badge {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 28px;
+  border-radius: 50%;
+  background: #fff;
+  color: #1c1b1c;
+  animation: signup-pop 0.5s var(--ease-spring) backwards;
+}
+
+@keyframes signup-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}

@@ -1,0 +1,38 @@
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #21304e;
+  color: #f7f7f8;
+  transition: opacity var(--fade) ease;
+}
+
+.splash--leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash__wordmark {
+  display: block;
+  overflow: visible;
+  transition: transform var(--fade) var(--ease-out);
+}
+
+.splash--leaving .splash__wordmark {
+  transform: scale(1.06);
+}
+
+.splash__wordmark path {
+  animation: splash-letter-in 0.7s var(--ease-out) backwards;
+  animation-delay: calc(0.15s + var(--i) * 0.08s);
+}
+
+@keyframes splash-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}

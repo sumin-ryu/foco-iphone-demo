@@ -1,0 +1,349 @@
+.toss {
+  --toss-blue: #3182f6;
+  --toss-blue-soft: #e8f3ff;
+  --toss-gray-900: #191f28;
+  --toss-gray-600: #6b7684;
+  --toss-gray-400: #b0b8c1;
+  --toss-gray-100: #f2f4f6;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--safe-top);
+  background: #fff;
+  color: var(--toss-gray-900);
+  animation: slide-in-up 0.42s var(--ease-out);
+}
+
+.toss.is-closing {
+  animation: toss-out 0.3s ease-in forwards;
+}
+
+@keyframes toss-out {
+  to {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+}
+
+/* Header */
+
+.toss__header {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  height: 52px;
+  padding: 0 8px;
+}
+
+.toss__close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--toss-gray-600);
+  --press-scale: 0.85;
+}
+
+.toss__close:active {
+  background: var(--toss-gray-100);
+}
+
+.toss__brand {
+  font-size: 16px;
+  letter-spacing: -0.3px;
+  text-align: center;
+  color: var(--toss-gray-900);
+}
+
+.toss__brand strong {
+  font-weight: 800;
+  color: var(--toss-blue);
+}
+
+.toss__test {
+  justify-self: end;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #fff4e6;
+  font-size: 11px;
+  font-weight: 600;
+  color: #f2994a;
+}
+
+/* Body */
+
+.toss__body {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.toss__body::-webkit-scrollbar {
+  display: none;
+}
+
+.toss__order {
+  padding: 18px 24px 26px;
+  border-bottom: 10px solid var(--toss-gray-100);
+}
+
+.toss__merchant {
+  font-size: 14px;
+  color: var(--toss-gray-600);
+}
+
+.toss__order-name {
+  margin-top: 6px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.toss__amount {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.toss__section {
+  padding: 24px;
+}
+
+.toss__section + .toss__section {
+  padding-top: 0;
+}
+
+.toss__section-title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.toss__methods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.toss__method,
+.toss__company {
+  border-radius: 12px;
+  background: var(--toss-gray-100);
+  color: var(--toss-gray-600);
+  font-weight: 500;
+  transition:
+    transform 0.45s var(--ease-spring),
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.toss__method {
+  height: 50px;
+  font-size: 15px;
+}
+
+.toss__method.is-selected,
+.toss__company.is-selected {
+  background: var(--toss-blue-soft);
+  box-shadow: inset 0 0 0 1.5px var(--toss-blue);
+  color: var(--toss-blue);
+  font-weight: 600;
+}
+
+.toss__card-options {
+  margin-top: 22px;
+  animation: fade-up 0.3s var(--ease-out);
+}
+
+.toss__label {
+  margin: 18px 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--toss-gray-600);
+}
+
+.toss__label:first-child {
+  margin-top: 0;
+}
+
+.toss__companies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.toss__company {
+  height: 42px;
+  font-size: 14px;
+}
+
+.toss__installment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: var(--toss-gray-100);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.toss__installment-note {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--toss-gray-400);
+}
+
+.toss__agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: left;
+  color: var(--toss-gray-900);
+  --press-scale: 0.98;
+}
+
+.toss__agree strong {
+  color: var(--toss-blue);
+  font-weight: 600;
+}
+
+.toss__checkbox {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e5e8eb;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.toss__agree.is-checked .toss__checkbox {
+  background: var(--toss-blue);
+  animation: pop 0.3s var(--ease-out);
+}
+
+.toss__notice {
+  margin-top: 14px;
+  padding-left: 32px;
+  font-size: 12px;
+  color: var(--toss-gray-400);
+}
+
+/* Footer */
+
+.toss__footer {
+  padding: 4px 16px calc(var(--safe-bottom) + 12px);
+}
+
+.toss__blocker {
+  height: 18px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--toss-gray-600);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.toss__blocker.is-visible {
+  opacity: 1;
+}
+
+.toss__pay {
+  width: 100%;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--toss-blue);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  --press-scale: 0.97;
+}
+
+.toss__pay:disabled {
+  background: #a5c9fb;
+  cursor: default;
+}
+
+.toss__pay:not(:disabled):active {
+  background: #1b64da;
+}
+
+/* Processing / success */
+
+.toss__status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 60px;
+  background: #fff;
+  animation: toss-fade 0.25s ease;
+}
+
+@keyframes toss-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.toss__spinner {
+  width: 46px;
+  height: 46px;
+  border: 4px solid var(--toss-blue-soft);
+  border-top-color: var(--toss-blue);
+  border-radius: 50%;
+  animation: toss-spin 0.8s linear infinite;
+}
+
+@keyframes toss-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toss__done {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--toss-blue);
+  color: #fff;
+  animation: toss-check 0.5s var(--ease-spring);
+}
+
+@keyframes toss-check {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+
+.toss__status-title {
+  margin-top: 22px;
+  font-size: 20px;
+  font-weight: 700;
+  animation: fade-up 0.35s var(--ease-out) 0.05s backwards;
+}
+
+.toss__status-sub {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--toss-gray-600);
+  animation: fade-up 0.35s var(--ease-out) 0.1s backwards;
+}

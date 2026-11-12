@@ -1,0 +1,181 @@
+.plan-select {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--safe-top);
+  background: var(--color-bg);
+}
+
+.plan-select__title {
+  margin-top: 21.7px;
+  padding: 0 24.5px;
+  font-size: 20.5px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #1c1b1c;
+  animation: fade-up 0.45s var(--ease-out) backwards;
+}
+
+.plan-select__lead {
+  margin-top: 10.3px;
+  padding: 0 24px;
+  font-size: 15px;
+  line-height: 25px;
+  color: #777788;
+  animation: fade-up 0.45s var(--ease-out) 40ms backwards;
+}
+
+.plan-select__lead strong {
+  font-weight: 400;
+  color: var(--color-navy);
+}
+
+/* List, scrolling together with the last review card above it */
+
+.plan-select__scroll {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin-top: 12px;
+  padding: 12px 9.5px 24px;
+  overflow-y: auto;
+  scroll-padding-bottom: 28px;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+}
+
+.plan-select__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.plan-select__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10.5px;
+}
+
+.plan-select__list li {
+  animation: fade-up 0.4s var(--ease-out) backwards;
+  animation-delay: calc(80ms + var(--i) * 50ms);
+}
+
+.plan-select__list.is-shaking {
+  animation: plan-select-shake 0.4s var(--ease-out);
+}
+
+.plan-select__list.is-shaking li {
+  animation: none;
+}
+
+@keyframes plan-select-shake {
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.plan-select__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 21px 24px 26px;
+  border-radius: 19px;
+  background: var(--color-card);
+  box-shadow:
+    0 0 0 0.5px #dddcd7,
+    2px 2px 11px rgba(0, 0, 0, 0.1);
+  color: #1c1b1c;
+  text-align: left;
+  transition: box-shadow 0.25s ease;
+  --press-scale: 0.98;
+}
+
+.plan-select__card.is-selected {
+  box-shadow:
+    0 0 0 2px var(--color-navy),
+    2px 2px 11px rgba(0, 0, 0, 0.1);
+}
+
+.plan-select__radio {
+  position: absolute;
+  top: 19px;
+  right: 22px;
+  width: 22px;
+  height: 22px;
+  border: 1.7px solid #d9d9d9;
+  border-radius: 50%;
+  transition: border-color 0.25s ease;
+}
+
+.plan-select__radio::after {
+  content: '';
+  position: absolute;
+  inset: 3.3px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  transform: scale(0);
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.is-selected .plan-select__radio {
+  border-color: var(--color-navy);
+}
+
+.is-selected .plan-select__radio::after {
+  transform: scale(1);
+}
+
+.plan-select__empty {
+  flex: 1;
+  margin-top: 40px;
+  font-size: 15px;
+  color: #777788;
+  text-align: center;
+}
+
+/* Actions */
+
+.plan-select__actions {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10.5px;
+  padding: 0 14.3px calc(var(--safe-bottom) + 32.9px);
+}
+
+.plan-select__primary,
+.plan-select__skip {
+  display: grid;
+  place-items: center;
+  height: 63px;
+  border-radius: 7.6px;
+  font-size: 15.5px;
+  font-weight: 500;
+  --press-scale: 0.97;
+}
+
+.plan-select__primary {
+  background: var(--color-navy);
+  color: #fff;
+  animation: fade-up 0.45s var(--ease-out) 0.2s backwards;
+}
+
+.plan-select__primary:active {
+  background: #1a2540;
+}
+
+.plan-select__skip {
+  padding-top: 3px;
+  color: var(--color-navy);
+  animation: fade-up 0.45s var(--ease-out) 0.25s backwards;
+}
+
+.plan-select__skip:active {
+  background: rgba(0, 0, 0, 0.04);
+}

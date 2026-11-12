@@ -1,0 +1,11 @@
+.checkout__notice {
+  position: absolute;
+  top: calc(var(--frame-top) + 271px + 18px + 42px);
+  left: 50%;
+  z-index: 3;
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}

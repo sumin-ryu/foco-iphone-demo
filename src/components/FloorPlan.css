@@ -1,0 +1,223 @@
+.floor-plan {
+  --fp-floor: #e6e7ea;
+  --fp-outline: #a3a9b6;
+  --fp-seat: #c3cde0;
+  --fp-line: #55627d;
+  --fp-chair-line: #9aa3b4;
+  --fp-navy: var(--color-navy);
+  --fp-sub: #6b7385;
+  position: relative;
+  flex: none;
+  background: var(--fp-floor);
+  box-shadow: 0 0 0 1.5px var(--fp-outline);
+  font-size: calc(var(--u) * 0.3);
+}
+
+.floor-plan--kiosk {
+  --fp-floor: var(--k-floor, #dcdcdc);
+  --fp-outline: #8a93a6;
+  --fp-seat: var(--k-seat, #b9c4d6);
+}
+
+/* ───────── Areas ───────── */
+
+.floor-plan__area {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.floor-plan__area-label {
+  font-weight: 600;
+  color: var(--fp-line);
+  white-space: nowrap;
+}
+
+.floor-plan__area-sub {
+  font-size: 0.85em;
+  color: var(--fp-sub);
+  white-space: nowrap;
+}
+
+.floor-plan__area--wall {
+  background: var(--fp-outline);
+}
+
+.floor-plan__area--window {
+  background: #8fb3e3;
+}
+
+.floor-plan__area--room {
+  background: #f4f5f7;
+  box-shadow: inset 0 0 0 1.25px var(--fp-outline);
+}
+
+.floor-plan__area.is-link {
+  --press-scale: 0.97;
+}
+
+.floor-plan__area-link {
+  margin-top: 2px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--fp-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .floor-plan__area.is-link:hover {
+    background: #fff;
+  }
+}
+
+.floor-plan__area--lounge {
+  background: #f4f5f7;
+  box-shadow: inset 0 0 0 1.25px var(--fp-outline);
+}
+
+.floor-plan__area--locker {
+  background: repeating-linear-gradient(
+    to right,
+    #f4f5f7 0,
+    #f4f5f7 calc(var(--u) * 0.42),
+    var(--fp-outline) calc(var(--u) * 0.42),
+    var(--fp-outline) calc(var(--u) * 0.44)
+  );
+  box-shadow: inset 0 0 0 1.25px var(--fp-outline);
+}
+
+.floor-plan__area--locker .floor-plan__area-label {
+  padding: 0 4px;
+  background: #f4f5f7;
+  font-size: 0.85em;
+}
+
+.floor-plan__area--kiosk {
+  background: #fff;
+  box-shadow: inset 0 0 0 1.25px var(--fp-navy);
+}
+
+.floor-plan__area--kiosk .floor-plan__area-label {
+  font-size: 0.8em;
+  color: var(--fp-navy);
+}
+
+.floor-plan__area--entrance {
+  background: var(--fp-navy);
+}
+
+.floor-plan__area--entrance .floor-plan__area-label {
+  color: #fff;
+}
+
+/* ───────── Zone markers ───────── */
+
+.floor-plan__zone {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 0.56);
+  height: calc(var(--u) * 0.56);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 0 1.25px var(--fp-line);
+  color: var(--fp-line);
+  font-size: calc(var(--u) * 0.3);
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+}
+
+/* ───────── Seats ───────── */
+
+.floor-plan__slot {
+  position: absolute;
+}
+
+.floor-plan__slot.is-selected {
+  z-index: 1;
+}
+
+.floor-plan__seat {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--fp-seat);
+  box-shadow: inset 0 0 0 1.25px var(--fp-line);
+  color: #fff;
+  font-size: calc(var(--u) * 0.32);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  --press-scale: 0.9;
+}
+
+.floor-plan__seat.is-occupied {
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent calc(50% - 0.7px),
+      var(--fp-line) calc(50% - 0.7px),
+      var(--fp-line) calc(50% + 0.7px),
+      transparent calc(50% + 0.7px)
+    ),
+    #fff;
+  cursor: default;
+}
+
+.floor-plan__seat.is-selected {
+  background: var(--fp-navy);
+  box-shadow: inset 0 0 0 1.25px var(--fp-navy);
+  animation: pop 0.35s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .floor-plan__seat:not(:disabled):not(.is-selected):hover {
+    background: #a9b8d3;
+  }
+}
+
+/* Chair tucked under the desk on the side given by the slot's `chair` modifier */
+.floor-plan__chair {
+  --c: calc(var(--u) * 0.42);
+  position: absolute;
+  width: var(--c);
+  height: var(--c);
+  border-radius: calc(var(--c) * 0.3);
+  background: #fff;
+  box-shadow: inset 0 0 0 1.25px var(--fp-chair-line);
+}
+
+.floor-plan__slot.is-selected .floor-plan__chair {
+  background: var(--fp-navy);
+  box-shadow: none;
+}
+
+.floor-plan__slot--chair-bottom .floor-plan__chair {
+  bottom: calc(var(--c) * -0.46);
+  left: calc(50% - var(--c) / 2);
+}
+
+.floor-plan__slot--chair-top .floor-plan__chair {
+  top: calc(var(--c) * -0.46);
+  left: calc(50% - var(--c) / 2);
+}
+
+.floor-plan__slot--chair-right .floor-plan__chair {
+  top: calc(50% - var(--c) / 2);
+  right: calc(var(--c) * -0.46);
+}
+
+.floor-plan__slot--chair-left .floor-plan__chair {
+  top: calc(50% - var(--c) / 2);
+  left: calc(var(--c) * -0.46);
+}
+
+.floor-plan--app {
+  font-size: 8.5px;
+}

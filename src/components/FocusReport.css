@@ -1,0 +1,384 @@
+.focus-done__count {
+  margin-left: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+.focus-done__pass-title {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+.focus-done__subjects-title {
+  margin-top: 36px;
+}
+
+/* Per-subject cards */
+
+.focus-done__subjects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.focus-done__subject-card {
+  padding: 18px 20px 8px;
+}
+
+.focus-done__subject-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.focus-done__subject-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.focus-done__share {
+  padding: 1px 7px;
+  border-radius: 9px;
+  background: var(--color-navy-soft);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.focus-done__subject-time {
+  flex: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.focus-done__goal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+.focus-done__goal-label {
+  flex: none;
+  padding: 1px 7px;
+  border-radius: 9px;
+  background: #e8edf7;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.focus-done__mix {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  margin: 14px 0 4px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f0f0f2;
+}
+
+.focus-done__mix span {
+  flex-basis: 0;
+  min-width: 2px;
+  transform-origin: left;
+  animation: timeline-grow 0.5s var(--ease-out) 0.2s backwards;
+}
+
+.focus-done__task {
+  min-height: 48px;
+  padding: 10px 0;
+  font-size: 14.5px;
+}
+
+.focus-done__task-title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.focus-done__task-title > span:not(.focus-done__done) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.focus-done__swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.focus-done__subject {
+  flex: none;
+  margin-right: 6px;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+.focus-done__done {
+  flex: none;
+  padding: 1px 7px;
+  border-radius: 9px;
+  background: #e8edf7;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.focus-done__task > strong {
+  flex: none;
+  font-size: 14.5px;
+}
+
+.focus-done__none {
+  color: #b5b8bf;
+  font-weight: 500;
+}
+
+.focus-done__empty {
+  padding: 4px 0 12px;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+/* Shown when the pass ran out and the session ended on its own */
+
+.focus-done__notice {
+  position: relative;
+  z-index: 1;
+  margin: 4px 4px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 138, 128, 0.12);
+  font-size: 13.5px;
+  color: #ff8a80;
+}
+
+/* Today's discovery */
+
+.focus-done__discovery {
+  position: relative;
+  z-index: 1;
+  padding: 16px 20px;
+}
+
+.focus-done__discovery-text {
+  margin-top: 6px;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* Notes and self feedback */
+
+.focus-done__memo-title {
+  margin-top: 36px;
+}
+
+.focus-done__memo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 20px;
+}
+
+.focus-done__memo-row + .focus-done__memo-row {
+  padding-top: 16px;
+  border-top: 0.5px solid var(--color-line);
+}
+
+.focus-done__memo-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-sub);
+}
+
+.focus-done__memo-text {
+  margin-top: 8px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.focus-done__feedback {
+  padding: 18px 20px;
+}
+
+/* Review for tomorrow: written on the completion page, read back in records */
+
+.focus-done__review-title {
+  margin-top: 36px;
+}
+
+.focus-done__review,
+.focus-done__review-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.focus-done__review {
+  gap: 8px;
+}
+
+.focus-done__review-line {
+  display: flex;
+  gap: 12px;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.focus-done__review-line b {
+  flex: none;
+  min-width: 48px;
+  font-weight: 600;
+  color: var(--color-text-sub);
+}
+
+.focus-done__review-form {
+  gap: 20px;
+}
+
+.focus-done__review-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.focus-done__review-row + .focus-done__review-row {
+  padding-top: 20px;
+  border-top: 0.5px solid var(--color-line);
+}
+
+.focus-done__review-label {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--color-text-sub);
+}
+
+.focus-done__review-label small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--color-muted);
+}
+
+.focus-done__note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--color-navy-soft);
+}
+
+.focus-done__note span {
+  flex: none;
+  min-width: 44px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.focus-done__note input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 14.5px;
+  color: var(--color-text);
+  outline: none;
+}
+
+.focus-done__note input::placeholder {
+  color: var(--color-muted);
+}
+
+.focus-done__moods {
+  display: flex;
+  gap: 8px;
+}
+
+.focus-done__mood {
+  flex: 1;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-navy-soft);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-sub);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  --press-scale: 0.95;
+}
+
+.focus-done__mood.is-selected {
+  background: var(--color-navy);
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+.focus-done__feedback-input {
+  display: block;
+  width: 100%;
+  height: 96px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--color-navy-soft);
+  font: inherit;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--color-text);
+  resize: none;
+  outline: none;
+}
+
+.focus-done__feedback-input::placeholder {
+  color: var(--color-muted);
+}
+
+.focus-done__feedback-hint {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+
+:root[data-screen='dark'] .focus-done__goal-label,
+:root[data-screen='dark'] .focus-done__done {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-screen='dark'] .focus-done__mix {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-screen='dark'] .focus-done__none {
+  color: rgba(255, 255, 255, 0.3);
+}

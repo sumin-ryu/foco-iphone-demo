@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/check-in",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    { "source": "/kiosk", "destination": "/kiosk/index.html" },
+    { "source": "/kiosk/:path*", "destination": "/kiosk/index.html" },
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
+}

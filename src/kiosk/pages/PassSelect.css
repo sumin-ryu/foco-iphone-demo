@@ -1,0 +1,134 @@
+.k-pass {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.k-pass__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px var(--k-gutter) 0;
+}
+
+.k-pass__logo {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--k-navy);
+}
+
+.k-pass__home {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-right: -10px;
+  border-radius: 14px;
+  color: var(--k-navy);
+}
+
+.k-pass__greeting {
+  padding: 28px var(--k-gutter) 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.3px;
+}
+
+.k-pass__greeting em {
+  font-style: normal;
+  color: var(--k-navy);
+  font-weight: 700;
+}
+
+/* Shorter passes take the three narrow cards on top, the two longest the wide ones below. */
+.k-pass__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  padding: 28px var(--k-gutter) 0;
+}
+
+.k-pass__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-column: span 2;
+  height: 214px;
+  padding: 24px 22px;
+  border-radius: 12px;
+  background: var(--k-gray);
+  color: #24262b;
+  text-align: left;
+  --press-scale: 0.97;
+}
+
+.k-pass__card:nth-last-child(-n + 2) {
+  grid-column: span 3;
+}
+
+.k-pass__card--active {
+  background: var(--k-navy);
+  color: #fff;
+}
+
+.k-pass__hours {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.k-pass__name {
+  margin-top: 6px;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  opacity: 0.85;
+}
+
+.k-pass__mark {
+  margin: auto;
+  color: var(--k-navy);
+}
+
+.k-pass__card--active .k-pass__mark {
+  color: #fff;
+}
+
+.k-pass__panel {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: auto;
+  height: 208px;
+  padding: 36px 36px 40px;
+  border-radius: 16px 16px 0 0;
+  background: var(--k-navy);
+  color: #fff;
+}
+
+.k-pass__info {
+  align-self: flex-start;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  animation: fade-up 0.3s var(--ease-out) backwards;
+}
+
+.k-pass__panel-name {
+  margin-bottom: 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.k-pass__action {
+  flex: none;
+  width: 176px;
+  height: 60px;
+  border-radius: 10px;
+  background: #c4cbd8;
+  color: var(--k-navy);
+  font-size: 18px;
+  font-weight: 700;
+}

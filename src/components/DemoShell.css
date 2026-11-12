@@ -1,0 +1,65 @@
+.stage {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.stage--demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 10%, #e6ecf8 0, transparent 45%),
+    radial-gradient(circle at 85% 90%, #e9e6f5 0, transparent 40%),
+    #eef0f4;
+}
+
+.stage--plain .stage__device {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* iframe embeds: fill the host phone screen (parent has no DemoShell frame). */
+.stage--embed,
+.stage--embed .stage__device {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* Story / framed-phone embeds: mirror `.iphone__screen` safe areas. */
+.stage--phone,
+.stage--phone .stage__device {
+  --safe-top: 54px;
+  --safe-bottom: 34px;
+}
+
+html:has(.stage--embed),
+html:has(.stage--embed) body,
+html:has(.stage--embed) #root {
+  height: 100%;
+}
+
+.demo-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.demo-controls--floating {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 560px) {
+  .demo-controls--floating {
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
+    bottom: auto;
+  }
+}

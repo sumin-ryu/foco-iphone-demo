@@ -1,0 +1,43 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 8px;
+}
+
+.page-header__back,
+.page-header__spacer {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.page-header__back {
+  --press-scale: 0.85;
+}
+
+.page-header__back:active {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.page-header__back svg {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.page-header__back:active svg {
+  transform: translateX(-3px);
+}
+
+@media (hover: hover) {
+  .page-header__back:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.page-header__title {
+  font-size: 17px;
+  font-weight: 600;
+}

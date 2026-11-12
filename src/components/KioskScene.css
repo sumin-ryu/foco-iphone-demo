@@ -1,0 +1,51 @@
+.kiosk-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #2a231e;
+  transition:
+    opacity 0.5s ease,
+    filter 0.3s ease;
+}
+
+.kiosk-scene__backdrop {
+  position: absolute;
+  inset: -8px;
+  filter: blur(2px);
+  background:
+    radial-gradient(ellipse 22% 14% at 4% 34%, rgba(255, 196, 128, 0.55), transparent 70%),
+    radial-gradient(ellipse 18% 10% at 3% 55%, rgba(255, 186, 120, 0.3), transparent 70%),
+    linear-gradient(to bottom, transparent 72%, rgba(0, 0, 0, 0.35)),
+    linear-gradient(
+      90deg,
+      transparent 0 8.5%,
+      #cbbfb1 8.5%,
+      #e4dbd0 22%,
+      #eee7de 48%,
+      #e2d8cc 76%,
+      #c4b7a8 91.5%,
+      transparent 91.5%
+    ),
+    linear-gradient(90deg, #1f1915 0 8.5%, transparent 8.5%),
+    repeating-linear-gradient(90deg, #5b4637 0 3px, #3a2c23 3px 8px);
+}
+
+/* Darkens the top of the camera view so the white header stays readable */
+.kiosk-scene::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: calc(var(--safe-top) + 90px);
+  background: linear-gradient(rgba(0, 0, 0, 0.55), transparent);
+  pointer-events: none;
+}
+
+.kiosk-scene__device {
+  position: absolute;
+  left: 50%;
+  --k-navy: var(--color-navy);
+  color: var(--color-text);
+  pointer-events: none;
+}

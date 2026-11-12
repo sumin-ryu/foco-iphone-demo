@@ -1,0 +1,268 @@
+.hour-wheel {
+  /* Distance from the top of the block to the bar in front */
+  --bar-y: 168px;
+  position: relative;
+  padding: 8px 0 12px;
+  touch-action: pan-x;
+  user-select: none;
+}
+
+/* Bars live behind everything, reaching up behind the totals above. */
+
+.hour-wheel__backdrop {
+  position: absolute;
+  top: -300px;
+  right: 0;
+  bottom: -24px;
+  left: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 90px,
+    #000 calc(100% - 64px),
+    transparent
+  );
+}
+
+.hour-wheel__fan {
+  position: absolute;
+  top: calc(300px + var(--bar-y));
+  /* Pivot sits 20px left of the flat bar's start, where the focus screen's rays meet */
+  right: 8px;
+  left: -12px;
+  transform-origin: 0 0;
+  transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.25, 1);
+}
+
+.hour-wheel__arm {
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 0;
+  transition: opacity 0.4s ease;
+}
+
+.hour-wheel__arm.is-hidden {
+  opacity: 0;
+}
+
+.hour-wheel__bar {
+  position: absolute;
+  top: -2.4px;
+  right: 0;
+  left: 20px;
+  height: 4.8px;
+  background: #494949;
+  transition:
+    filter 0.6s ease,
+    opacity 0.6s ease;
+}
+
+/* Bars off the flat position read as the focus screen's soft rays */
+.hour-wheel__arm:not(.is-front) .hour-wheel__bar {
+  filter: blur(3px);
+  opacity: 0.55;
+  mask-image: linear-gradient(to right, #000 10%, rgba(0, 0, 0, 0.2));
+}
+
+.hour-wheel__bar span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.hour-wheel__bar i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0.5px;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateX(-50%);
+}
+
+/* Where the session ended */
+.hour-wheel__tip {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 28%, rgba(255, 255, 255, 0.45) 48%, transparent 72%);
+  animation: hour-wheel-twinkle 1.6s ease-in-out infinite;
+}
+
+@keyframes hour-wheel-twinkle {
+  0%,
+  100% {
+    transform: scale(0.75);
+    opacity: 0.55;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.45);
+  }
+}
+
+/* Headings ride the fan above their bar; the hour details below stay put. */
+
+.hour-wheel__heads {
+  top: var(--bar-y);
+  pointer-events: none;
+}
+
+.hour-wheel__heads .hour-wheel__arm.is-hidden {
+  opacity: 0;
+}
+
+.hour-wheel__head {
+  position: absolute;
+  right: 0;
+  bottom: 20.4px;
+  left: 20px;
+}
+
+.hour-wheel__text {
+  position: relative;
+  /* Room for the heading and the flat bar */
+  padding: calc(var(--bar-y) - 8px + 2.4px) 8px 0;
+}
+
+.hour-wheel__label,
+.hour-wheel__timer,
+.hour-wheel__caption {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-navy);
+}
+
+.hour-wheel__label {
+  font-size: 22.6px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.hour-wheel__timer {
+  margin-top: 2px;
+  font-size: 54px;
+  font-weight: 200;
+  line-height: 60px;
+}
+
+.hour-wheel__timer.is-empty {
+  color: #514d51;
+}
+
+.hour-wheel__caption {
+  margin-top: 2px;
+  font-size: 12.5px;
+  line-height: 18px;
+  color: var(--color-text-sub);
+}
+
+/* Frosted glass over the rays */
+.hour-wheel__legend {
+  min-height: calc(var(--rows) * 30px + 20px);
+  margin-top: 48px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(58, 57, 60, 0.35);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+.hour-wheel__row {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  font-size: 14.5px;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.hour-wheel__swatch {
+  flex: none;
+  width: 11.4px;
+  height: 11.4px;
+  background: #3a393c;
+}
+
+.hour-wheel__clock {
+  flex: none;
+  width: 44px;
+  margin-left: 9px;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-sub);
+}
+
+.hour-wheel__name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hour-wheel__name em {
+  margin-right: 6px;
+  font-size: 12.5px;
+  font-style: normal;
+  color: var(--color-text-sub);
+}
+
+.hour-wheel__duration {
+  flex: none;
+  margin-left: 8px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.hour-wheel__row.is-unused,
+.hour-wheel__row.is-unused .hour-wheel__clock,
+.hour-wheel__row.is-unused .hour-wheel__duration {
+  font-weight: 400;
+  color: #6b676c;
+}
+
+/* Hour indicator */
+
+.hour-wheel__dots {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.hour-wheel__dot {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 9px;
+}
+
+.hour-wheel__dot::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+  transition:
+    height 0.3s var(--ease-out),
+    background-color 0.3s ease;
+}
+
+.hour-wheel__dot.is-active {
+  height: 18px;
+}
+
+.hour-wheel__dot.is-active::before {
+  height: 14px;
+  background: var(--color-navy);
+}

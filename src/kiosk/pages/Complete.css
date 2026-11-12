@@ -1,0 +1,72 @@
+.k-done {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--k-gutter-wide) 24px;
+}
+
+.k-done__mark {
+  color: var(--k-navy);
+}
+
+.k-done__title {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.k-done__message {
+  margin-top: 12px;
+  font-size: 18px;
+  color: var(--k-sub);
+}
+
+.k-done__card {
+  width: 100%;
+  margin: 48px 0 0;
+  padding: 12px 28px;
+  border-radius: 16px;
+  background: var(--k-gray);
+}
+
+.k-done__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-size: 18px;
+}
+
+.k-done__row + .k-done__row {
+  border-top: 1px solid var(--k-gray-line);
+}
+
+.k-done__row dt {
+  color: var(--k-sub);
+}
+
+.k-done__row dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--k-navy);
+}
+
+.k-done__note {
+  margin-top: 20px;
+  font-size: 15px;
+  color: var(--k-sub);
+}
+
+.k-done__home {
+  width: 220px;
+  margin-top: 56px;
+}
+
+.k-done__countdown {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--color-muted);
+}

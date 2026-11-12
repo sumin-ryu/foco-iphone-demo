@@ -1,0 +1,61 @@
+:root {
+  --k-navy: var(--color-navy);
+  --k-gray: #efeeeb;
+  --k-gray-line: #dddcd7;
+  --k-seat: #b9c4d6;
+  --k-floor: #dcdcdc;
+  --k-sub: #6b7385;
+
+  /* Horizontal layout (540-wide canvas) */
+  --k-gutter: 32px; /* PASS · seat · payment */
+  --k-gutter-wide: 40px; /* QR · complete */
+  /* Home action row: 200 + 17 + 200 = 417 → side (540 − 417) / 2 ≈ 61.5 */
+  --k-home-module: 417px;
+  --k-home-gap: 17px;
+  --k-home-gutter: 61.5px;
+}
+
+html,
+body {
+  background: #fff;
+}
+
+.kiosk-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  animation: kiosk-page-in 0.35s var(--ease-out) backwards;
+}
+
+@keyframes kiosk-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ───────── Buttons ───────── */
+
+.k-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 40px;
+  border-radius: 12px;
+  background: var(--k-navy);
+  color: #fff;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.k-btn:disabled {
+  background: #c9ccd3;
+  cursor: default;
+}
+
+.k-btn--ghost {
+  background: var(--k-gray);
+  color: var(--color-text);
+}

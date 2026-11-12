@@ -1,0 +1,29 @@
+.k-header {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  height: 88px;
+  padding: 0 16px;
+  flex: none;
+}
+
+.k-header__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  color: var(--color-text);
+}
+
+.k-header__title {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.k-header__title--caps {
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

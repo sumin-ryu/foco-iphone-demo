@@ -1,0 +1,142 @@
+.pass {
+  padding-top: 7px;
+}
+
+.pass__title {
+  padding: 0 24px;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 30px;
+  color: #1c1b1c;
+  animation: fade-up 0.45s var(--ease-out) backwards;
+}
+
+.pass__lead {
+  margin-top: 5px;
+  padding: 0 24px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #777788;
+  animation: fade-up 0.45s var(--ease-out) 40ms backwards;
+}
+
+.pass__lead strong {
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+/* Carousel */
+
+.pass__track {
+  display: flex;
+  gap: 22px;
+  margin-top: 24px;
+  padding: 14px calc(50% - 150.5px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  animation: slide-in-right 0.5s var(--ease-out) 80ms backwards;
+}
+
+.pass__track::-webkit-scrollbar {
+  display: none;
+}
+
+.pass-card {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  width: 301px;
+  height: 301.5px;
+  padding: 21px 20px 0;
+  border-radius: 19px;
+  background: var(--card-color);
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.12);
+  color: var(--color-navy);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  cursor: pointer;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.pass-card:not(.is-active):active {
+  transform: scale(0.97);
+}
+
+.pass-card__hours {
+  font-size: 27px;
+  line-height: 32px;
+}
+
+.pass-card__name {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+}
+
+.pass-card__mark {
+  align-self: center;
+  margin-top: 33px;
+}
+
+.pass-card__bar,
+.pass-card__count {
+  font-size: 14.5px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.pass-card__bar {
+  margin-top: 4px;
+}
+
+.pass-card__count {
+  margin-top: 25px;
+  color: #1c1b1c;
+}
+
+/* Dots */
+
+.pass__dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 22px;
+}
+
+.pass__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  transition:
+    background-color 0.3s ease,
+    transform 0.45s var(--ease-spring);
+  --press-scale: 0.8;
+}
+
+.pass__dot.is-active {
+  background: var(--color-navy);
+}
+
+/* Buy */
+
+.pass__buy {
+  display: grid;
+  place-items: center;
+  height: 63px;
+  margin: 39.5px 14px 0;
+  border-radius: 7.5px;
+  background: var(--color-navy);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  animation: fade-up 0.45s var(--ease-out) 0.2s backwards;
+  --press-scale: 0.97;
+}
+
+.pass__buy:active {
+  background: #1a2540;
+}

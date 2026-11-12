@@ -1,0 +1,41 @@
+.subject-suggest {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  animation: fade-up 0.3s var(--ease-out) backwards;
+}
+
+.subject-suggest__label {
+  flex: none;
+  font-size: 12px;
+  color: #a2a2ad;
+}
+
+.subject-suggest__chips {
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.subject-suggest__chips::-webkit-scrollbar {
+  display: none;
+}
+
+.subject-suggest__chip {
+  flex: none;
+  height: 28px;
+  padding: 0 11px;
+  border-radius: 14px;
+  background: #eef1f7;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-navy);
+  --press-scale: 0.94;
+}
+
+.subject-suggest__chip:active {
+  background: #dfe5f1;
+}

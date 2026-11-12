@@ -1,0 +1,443 @@
+.record {
+  padding: 18px 10px 0;
+}
+
+.record > * {
+  animation: fade-up 0.45s var(--ease-out) backwards;
+}
+
+.record > :nth-child(2) { animation-delay: 50ms; }
+.record > :nth-child(3) { animation-delay: 100ms; }
+.record > :nth-child(4) { animation-delay: 140ms; }
+
+.record__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 6px;
+}
+
+.record__today {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: var(--color-card);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-navy);
+  animation: scale-in 0.3s var(--ease-spring);
+  --press-scale: 0.9;
+}
+
+.record__title {
+  margin-left: 13px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.2px;
+}
+
+/* Calendar */
+
+.calendar {
+  margin-top: 14px;
+  padding-bottom: 6px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+.calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 82px;
+  padding: 0 15px;
+}
+
+.calendar__nav {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--color-text);
+  --press-scale: 0.85;
+}
+
+.calendar__nav:not(:disabled):active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.calendar__nav:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.calendar__month {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  animation: fade-up 0.35s var(--ease-out);
+}
+
+.calendar__month-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px 4px 10px;
+  border-radius: 10px;
+  --press-scale: 0.96;
+}
+
+.calendar__month-link svg {
+  color: var(--color-text-sub);
+}
+
+.calendar__month-link:active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 26px;
+  font-size: 12px;
+  line-height: 26px;
+  text-align: center;
+  color: #9a9da5;
+}
+
+.calendar__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 81px;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.calendar__grid--next {
+  animation: slide-in-right 0.4s var(--ease-out);
+}
+
+.calendar__grid--prev {
+  animation: slide-in-left 0.4s var(--ease-out);
+}
+
+.calendar__highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / 7);
+  height: 81px;
+  border-radius: 5px;
+  background: var(--color-navy);
+  transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+  animation: highlight-in 0.3s ease-out;
+}
+
+@keyframes highlight-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.calendar__day {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  color: var(--color-text);
+  transition:
+    color 0.3s ease,
+    background-color 0.2s ease;
+  --press-scale: 1;
+}
+
+/* Days without a record let pointer events through so the grid still sees swipes */
+.calendar__day:disabled {
+  pointer-events: none;
+}
+
+.calendar__day.is-outside {
+  color: #c5c7cd;
+}
+
+.calendar__day.is-today .calendar__date {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  margin: -3px 0;
+  padding: 0 4px;
+  border-radius: 13px;
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.calendar__day.is-today.is-selected .calendar__date {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.calendar__day.is-selected {
+  color: #fff;
+  transition-delay: 0.12s, 0s;
+}
+
+.calendar__date {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.calendar__mark {
+  margin-top: 10px;
+  color: var(--color-navy);
+  transition: color 0.25s ease;
+}
+
+.calendar__day.is-selected .calendar__mark {
+  color: #fff;
+  transition-delay: 0.12s;
+}
+
+@media (hover: hover) {
+  .calendar__day:not(.is-selected):not(:disabled):hover {
+    background: rgba(34, 48, 79, 0.04);
+    border-radius: 5px;
+  }
+
+  .calendar__nav:not(:disabled):hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Month summary & type entry — thin bar above the calendar */
+
+.record-month-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 18px 18px 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  color: var(--color-text);
+  --press-scale: 0.98;
+}
+
+.record-month-entry__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.record-month-entry__label em {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--color-navy-soft);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.record-month-entry__type,
+.record-month-entry__hint {
+  grid-column: 1;
+  margin-top: 8px;
+}
+
+.record-month-entry__hint {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-sub);
+}
+
+.record-month-entry__type {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  min-width: 0;
+  color: var(--color-navy);
+}
+
+.record-month-entry__type svg {
+  flex: none;
+  align-self: center;
+}
+
+.record-month-entry__type strong {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.record-month-entry__type small {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--color-text-sub);
+}
+
+.record-month-entry > svg:last-child {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  color: #c0c3ca;
+}
+
+/* Selected day summary */
+
+.record__summary-card {
+  margin-top: 14px;
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+.record-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 24px 32px;
+  text-align: center;
+}
+
+.record-summary > * {
+  animation: fade-up 0.4s var(--ease-out) backwards;
+}
+
+.record-summary > :nth-child(2) { animation-delay: 30ms; }
+.record-summary > :nth-child(4) { animation-delay: 90ms; }
+.record-summary > :nth-child(5) { animation-delay: 120ms; }
+
+.record-summary > .record-summary__mark {
+  animation: none;
+}
+
+.record-summary__title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.record-summary__title span {
+  color: #46526e;
+}
+
+.record-summary__meta {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #9a9da5;
+}
+
+.record-summary__mark {
+  margin-top: 32px;
+  color: var(--color-navy);
+}
+
+.record-summary--empty .record-summary__mark {
+  color: #e6e8ee;
+}
+
+.record-summary__legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-sub);
+}
+
+.record-summary__swatch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--color-navy);
+}
+
+.record-summary__swatch:first-child {
+  margin-left: 0;
+}
+
+.record-summary__swatch--rest {
+  background: #c45c5c;
+}
+
+.record-summary__swatch--idle {
+  background: color-mix(in srgb, var(--color-navy) 28%, #fff);
+}
+
+.record-summary__stats {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 25px;
+  color: #222;
+}
+
+.record-summary--empty .record-summary__stats {
+  color: #9a9da5;
+}
+
+.record-summary__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-end;
+  margin-top: 16px;
+  margin-right: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8f939b;
+}
+
+.record-summary__more svg {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.record-summary__more:active svg {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) {
+  .record-summary__more:hover {
+    color: var(--color-navy);
+  }
+
+  .record-summary__more:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.record-summary__room {
+  align-self: center;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  font-size: 12px;
+  font-weight: 500;
+}
