@@ -7,9 +7,11 @@ import './styles/global.css';
 // iOS Safari only applies :active styles when a touch listener is registered.
 document.addEventListener('touchstart', () => {}, { passive: true });
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basename === '/' ? undefined : basename}>
       <App />
     </BrowserRouter>
   </StrictMode>,
